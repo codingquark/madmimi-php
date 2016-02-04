@@ -253,8 +253,9 @@ class MadMimi {
 		$request = $this->DoRequest($path, $options, $return, 'POST', false);
 		return $request;
 	}
-    function ListMembers($list_name, $return = false) {
-        $request = $this->DoRequest('/audience_lists/' . rawurlencode($list_name) . '/members.xml', $this->default_options(), $return);
+    function ListMembers($list_name, $options = [], $return = false) {
+        $options = array_merge($this->default_options(), $options);
+        $request = $this->DoRequest('/audience_lists/' . rawurlencode($list_name) . '/members.xml', $options, $return);
         return $request;
     }
 }
